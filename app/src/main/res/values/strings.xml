@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">NYT Books</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title">Book Name</string>
+    <string name="autor">Autor Name</string>
+    <string name="date">Editorial: %s</string>
+    <string name="rank">Ranking: %s</string>
+</resources>

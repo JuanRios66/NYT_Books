@@ -13,18 +13,16 @@ interface ApiService {
     @GET("lists/current/audio nonfiction.json")
     fun offset(@Query("api-key") apiKey: String): Call<Results>
 
-    companion object{
+    companion object {
         val URL_API = "https://api.nytimes.com/svc/books/v3/"
 
-        fun create() : ApiService{
-
+        fun create(): ApiService {
             val interceptor = HttpLoggingInterceptor()
             interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
 
             val okHttpClient = OkHttpClient.Builder()
                 .addInterceptor(interceptor)
                 .build()
-
 
             val retrofit = Retrofit.Builder()
                 .baseUrl(URL_API)
@@ -33,7 +31,6 @@ interface ApiService {
                 .build()
 
             return retrofit.create(ApiService::class.java)
-
         }
     }
 }

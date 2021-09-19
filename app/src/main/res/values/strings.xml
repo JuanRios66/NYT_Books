@@ -6,4 +6,5 @@
     <string name="autor">Autor Name</string>
     <string name="date">Editorial: %s</string>
     <string name="rank">Ranking: %s</string>
+    <string name="data_error">Hubo un error al cargar los datos</string>
 </resources>

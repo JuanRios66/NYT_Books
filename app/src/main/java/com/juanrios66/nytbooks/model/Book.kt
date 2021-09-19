@@ -56,7 +56,7 @@ data class Book(
     val title: String?,
     @SerializedName("weeks_on_list")
     val weeksOnList: Int?
-): Serializable
+) : Serializable
 
 data class Results(
     @SerializedName("copyright")

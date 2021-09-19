@@ -2,15 +2,16 @@ package com.juanrios66.nytbooks.ui
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.juanrios66.nytbooks.R
 import com.juanrios66.nytbooks.databinding.FragmentListBinding
 import com.juanrios66.nytbooks.model.Book
-import com.juanrios66.nytbooks.model.BooksList
 import com.juanrios66.nytbooks.model.Results
 import com.juanrios66.nytbooks.server.ApiService
 import retrofit2.Call
@@ -43,12 +44,15 @@ class ListFragment : Fragment() {
     }
 
     private fun onMovieItemClicked(book: Book) {
-        findNavController().navigate(ListFragmentDirections.actionListFragmentToDetailBookFragment(book = book))
+        findNavController().navigate(
+            ListFragmentDirections.actionListFragmentToDetailBookFragment(
+                book = book
+            )
+        )
     }
 
     private fun loadBooks() {
         val apiKey = "qIQTf3oE8w44vELIGu6G7yzAAnSJUhJ3"
-
         ApiService.create()
             .offset(apiKey)
             .enqueue(object : Callback<Results> {
@@ -62,9 +66,12 @@ class ListFragment : Fragment() {
 
                 override fun onFailure(call: Call<Results>, t: Throwable) {
                     Log.d("Error", t.message.toString())
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.data_error),
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
-
             })
     }
 }
-
